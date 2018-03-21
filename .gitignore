@@ -1,0 +1,18 @@
+# A leading slash matches the root directory.
+# A trailing slash ensures that only directories are matched and not files.
+
+# OS/filesystem metadata files
+.DS_Store
+
+# IDE
+*.iml
+.idea/inspectionProfiles/
+.idea/
+.idea/workspace.xml
+
+
+
+# NPM directory
+node_modules/
+
+dist/
