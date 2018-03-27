@@ -1,34 +1,58 @@
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: './src/index.js'
-    },
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './src/index.js'
+    ],
     output: {
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        publicPath: '/dist/'
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        hot: true,
+    },
+    resolve: {
+        extensions: ['.js']
     },
     module: {
-        rules: [
-            {
-                test: /\.js$/, // include .js files
-                enforce: "pre", // preload the jshint loader
-                exclude: /node_modules/, // exclude any and all files in the node_modules folder
+        rules: [{
+            test: /\.js$/, // include .js files
+            enforce: 'pre', // preload the jshint loader
+            exclude: /node_modules/, // exclude any and all files in the node_modules folder
+            include: path.join(__dirname, 'src'),
+            use: [{
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react', 'stage-2']
-                },
-                // use: [
-                //     {
-                //         loader: "jshint-loader",
-                //         options: {
-                //             camelcase: true,
-                //             emitErrors: false,
-                //             failOnHint: false
-                //         }
-                //     }
-                // ]
-            }
+                options: {
+                    presets: [
+                        'es2015',
+                        'stage-2',
+                        'react'
+                    ]
+                }
+            },
+            // {
+            //         test: /\.css$/,
+            //         loader: 'style!css'
+            // }
+            ],
+            // use: [
+            //     {
+            //         loader: "jshint-loader",
+            //         options: {
+            //             camelcase: true,
+            //             emitErrors: false,
+            //             failOnHint: false
+            //         }
+            //     }
+            // ]
+        },
         ]
     }
 };
