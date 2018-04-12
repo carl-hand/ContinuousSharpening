@@ -1,0 +1,31 @@
+Workshop:
+
+We have just built a really popular app, in exercises 1-4, that allows one to enter text into an input box
+and add those entries into a dropdown element. The community has gone cray for this app. Number 1 in the app
+store and we all got lambos now. However, we never created a register and login page and this has made
+our users very upset! Requirements have come in to create a register page and also a login page.
+Gotta give the people what they want so today let's do it!
+
+1) Create a register component that allows the user to enter the following information:
+    - Username
+    - Email
+    - Password
+    - Confirm password
+    - Store these values so we can use them later
+    - Add a register button
+
+2) Create a login page that allows the user to enter the following information:
+    - Username or email
+    - Password
+    - Add a login button
+
+3) Now that our two pages are created, lets add some validation to our pages:
+    Register:
+    - No fields are empty
+    - Email contains @ symbol
+    - password and confirm password match
+
+    Login:
+    - No fields are empty
+    - username or email entered match what was provided when registering
+    - password entered match what was provided when registering
